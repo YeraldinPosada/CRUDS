@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,21 +12,23 @@ use App\Http\Controllers\AuthorController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 
-1. Index
-2. Guarde los datos 
-3. Muestre datos**
-4. edite
-5. borre
-|
 */
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Autores
 Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
 Route::post('/authors', [AuthorController::class, 'store'])->name('authors.store');
 Route::get('/authors/{id}', [AuthorController::class, 'edit'])->name('authors.edit');
 Route::delete('/authors/{id}', [AuthorController::class, 'destroy'])->name('authors.destroy');
 Route::put('/authors/{id}', [AuthorController::class, 'update'])->name('authors.update');
 
+//Libros
+
+Route::get('/books', [BookController::class,'index'])->name('books.index');
+Route::post('/books', [BookController::class, 'store'])->name('books.store');
+Route::get('/books/{id}', [BookController::class,'edit'])->name('books.edit');
+Route::put('/books/{id}', [BookController::class,'update'])->name('books.update');
+Route::delete('/books/{id}', [BookController::class,'destroy'])->name('books.destroy');
