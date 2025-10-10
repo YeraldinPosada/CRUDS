@@ -40,8 +40,8 @@
             <tr>
                 @foreach ($author_books as $author_book)
                     <td>{{$author_book->id}}</td>
-                    <td>{{$author_book->author_id}}</td>
-                    <td>{{$author_book->book_id}}</td>
+                    <td>{{$author_book->author->name}}</td>
+                    <td>{{$author_book->book->name}}</td>
                 @endforeach
             </tr>
         </tbody>
