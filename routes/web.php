@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorBookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +33,7 @@ Route::post('/books', [BookController::class, 'store'])->name('books.store');
 Route::get('/books/{id}', [BookController::class,'edit'])->name('books.edit');
 Route::put('/books/{id}', [BookController::class,'update'])->name('books.update');
 Route::delete('/books/{id}', [BookController::class,'destroy'])->name('books.destroy');
+
+//AuthorBooks
+Route::get('/author_books', [AuthorBookController::class,'index'])->name('author_books.index');
+Route::post('/author_books', [AuthorBookController::class, 'store'])->name('author_books.store');
