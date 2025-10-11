@@ -37,3 +37,6 @@ Route::delete('/books/{id}', [BookController::class,'destroy'])->name('books.des
 //AuthorBooks
 Route::get('/author_books', [AuthorBookController::class,'index'])->name('author_books.index');
 Route::post('/author_books', [AuthorBookController::class, 'store'])->name('author_books.store');
+Route::get('/author_books/{id}', [AuthorBookController::class,'edit'])->name('author_books.edit');
+Route::put('/author_books/{id}', [AuthorBookController::class,'update'])->name('author_books.update');
+Route::delete('/author_books/{id}', [AuthorBookController::class, 'destroy'])->name('author_books.destroy');

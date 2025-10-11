@@ -68,7 +68,10 @@ class AuthorBookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $author_book = AuthorBook::find($id);
+        $authors = Author::all();
+        $books = Book::all();
+        return view("author_books.update", compact("author_book", "authors", "books"));
     }
 
     /**
@@ -80,7 +83,11 @@ class AuthorBookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $author_book = AuthorBook::find($id);
+        $author_book->author_id = $request->author_id;
+        $author_book->book_id = $request->book_id;
+        $author_book->save();
+        return redirect()->route("author_books.index");
     }
 
     /**
@@ -91,6 +98,9 @@ class AuthorBookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $author_book= AuthorBook::find($id);
+        $author_book->delete();
+
+        return redirect()->route("author_books.index");
     }
 }

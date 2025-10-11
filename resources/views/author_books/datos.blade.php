@@ -37,13 +37,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
                 @foreach ($author_books as $author_book)
+                <tr>
                     <td>{{$author_book->id}}</td>
                     <td>{{$author_book->author->name}}</td>
                     <td>{{$author_book->book->name}}</td>
+                    <td><a href="{{route("author_books.edit", $author_book->id)}}">Editar</a></td>
+                    <td>
+                        <form action="{{route("author_books.destroy", $author_book->id)}}" method="post">
+                        @method("DELETE")
+                        @csrf
+                        <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
                 @endforeach
-            </tr>
         </tbody>
     </table>
 </body>
