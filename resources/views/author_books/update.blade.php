@@ -13,12 +13,12 @@
         @csrf
         <select name="author_id" id="">
             @foreach ($authors as $author)
-                <option value="{{$author->id}}">{{$author->name}}</option>
+                <option value="{{$author->id}}" {{$author->id==$author_book->author_id ? 'selected' : ''}}>{{$author->name}}</option>
             @endforeach
         </select>
         <select name="book_id" id="">
             @foreach ($books as $book)
-                <option value="{{$book->id}}">{{$book->name}}</option>
+                <option value="{{$book->id}}" {{$book->id == $author_book->book_id ? 'selected' : ''}}>{{$book->name}}</option>
             @endforeach
         </select>
         <button type="submit">Actualizar</button>
