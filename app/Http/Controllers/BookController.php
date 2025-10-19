@@ -98,4 +98,10 @@ class BookController extends Controller
         
         return redirect()->route('books.index');
     }
+
+    public function getMaxPrice(){
+        $book_max_price = Book::orderBy('price', 'desc')->first();  //Ordena por el precio y guarda el primero
+        $books = Book::all();
+        return view('book.index', compact('books', 'book_max_price'));
+    }
 }

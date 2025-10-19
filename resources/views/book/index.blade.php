@@ -41,5 +41,8 @@
             @endforeach
         </tbody>
     </table>
+
+    
+    <span>El libro mas costoso es {{$book_max_price->price}}</span>
 </body>
 </html>

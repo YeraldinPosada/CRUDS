@@ -40,3 +40,23 @@ Route::post('/author_books', [AuthorBookController::class, 'store'])->name('auth
 Route::get('/author_books/{id}', [AuthorBookController::class,'edit'])->name('author_books.edit');
 Route::put('/author_books/{id}', [AuthorBookController::class,'update'])->name('author_books.update');
 Route::delete('/author_books/{id}', [AuthorBookController::class, 'destroy'])->name('author_books.destroy');
+
+Route::get('/get_max_price', [BookController::class, 'getMaxPrice'])->name('get_max_price');
+
+/*
+Route::get('/test_middleware', function(){
+    return 'Middleware paso :)';
+})->middleware('test');
+*/
+
+Route::get('/book100/{id}', function(){
+    return 'Si hay';
+})->middleware('book100');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
