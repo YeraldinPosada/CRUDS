@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\AuthorBook;
+use App\Models\Author;
 
 class BookController extends Controller
 {
@@ -15,8 +17,9 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
+        $book_max_price = Book::orderBy('price', 'desc')->first();
 
-        return view('book.index')->with("books", $books);
+        return view('book.index', compact("books", "book_max_price"));
     }
 
     /**
@@ -104,4 +107,5 @@ class BookController extends Controller
         $books = Book::all();
         return view('book.index', compact('books', 'book_max_price'));
     }
+
 }

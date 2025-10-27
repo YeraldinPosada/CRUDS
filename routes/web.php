@@ -28,7 +28,8 @@ Route::put('/authors/{id}', [AuthorController::class, 'update'])->name('authors.
 
 //Libros
 
-Route::get('/books', [BookController::class,'index'])->name('books.index');
+
+Route::get('/books', [BookController::class,'index'])->name('books.index')->middleware("auth", "role:user|admin");
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
 Route::get('/books/{id}', [BookController::class,'edit'])->name('books.edit');
 Route::put('/books/{id}', [BookController::class,'update'])->name('books.update');
@@ -43,20 +44,12 @@ Route::delete('/author_books/{id}', [AuthorBookController::class, 'destroy'])->n
 
 Route::get('/get_max_price', [BookController::class, 'getMaxPrice'])->name('get_max_price');
 
-/*
-Route::get('/test_middleware', function(){
-    return 'Middleware paso :)';
-})->middleware('test');
-*/
 
 Route::get('/book100/{id}', function(){
     return 'Si hay';
 })->middleware('book100');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
